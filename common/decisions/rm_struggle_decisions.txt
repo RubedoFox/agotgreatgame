@@ -1,0 +1,478 @@
+## Red Mountains Struggle Decisions
+
+## If a kingdom successfully unites the Red Mountains, annex all RM duchies
+struggle_rm_ending_conquest_decision = {
+	decision_group_type = major
+	title = struggle_rm_ending_conquest_decision
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_hostility.dds"
+	}
+	extra_picture = "gfx/interface/illustrations/struggle_decisions_buttons/fp2_decision_hostility.dds"
+	desc = struggle_rm_ending_conquest_decision_desc
+	selection_tooltip = struggle_rm_ending_conquest_decision_tooltip
+	confirm_click_sound = "event:/DLC/FP2/SFX/UI/fp2_struggle_ending_decision_confirm"
+	is_invisible = yes
+	sort_order = 80
+
+	is_valid = {
+		OR = {
+			has_primary_title = title:k_dorne
+			has_primary_title = title:e_dorne
+			has_primary_title = title:k_the_stormlands
+			has_primary_title = title:e_the_stormlands
+			has_primary_title = title:k_the_reach
+			has_primary_title = title:e_the_reach
+		}
+		completely_controls_region = world_red_mountains_core
+
+		custom_tooltip = {
+			text = struggle_ending_decision_correct_involvement_tt
+			any_character_struggle = {
+				involvement = involved
+				is_struggle_type = red_mountains_struggle
+			}
+		}
+	}
+
+	effect = {
+		##### Major Effects #####
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+			}
+			title:d_the_stoneway = { set_de_jure_liege_title = title:k_dorne }
+			title:d_redmarch = { set_de_jure_liege_title = title:k_dorne }
+			title:d_the_princes_pass = { set_de_jure_liege_title = title:k_dorne }
+			title:d_blackmont = { set_de_jure_liege_title = title:k_dorne }
+			title:d_torrentine = { set_de_jure_liege_title = title:k_dorne }
+			title:d_the_westmarch = { set_de_jure_liege_title = title:k_dorne }
+			title:d_palemarch = { set_de_jure_liege_title = title:k_dorne }
+			title:d_nightsong = { set_de_jure_liege_title = title:k_dorne }
+			title:d_marchfields = { set_de_jure_liege_title = title:k_dorne }
+			title:d_whentway = { set_de_jure_liege_title = title:k_dorne }
+			title:d_blackhaven = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {	
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_the_slayne
+			}
+			title:d_the_slayne = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {	
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_grandview
+			}
+			title:d_grandview = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_red_watch
+			}
+			title:d_red_watch = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_cockleswhent
+			}
+			title:d_cockleswhent = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_ridgeview
+			}
+			title:d_ridgeview = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_oldhills
+			}
+			title:d_oldhills = { set_de_jure_liege_title = title:k_dorne }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+			}
+			title:d_the_stoneway = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_redmarch = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_the_princes_pass = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_blackmont = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_torrentine = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_the_westmarch = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_palemarch = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_nightsong = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_marchfields = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_whentway = { set_de_jure_liege_title = title:k_the_reach }
+			title:d_blackhaven = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_the_slayne
+			}
+			title:d_the_slayne = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_grandview
+			}
+			title:d_grandview = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_red_watch
+			}
+			title:d_red_watch = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_yronwood
+			}
+			title:d_yronwood = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_oldwell
+			}
+			title:d_oldwell = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_sandstone
+			}
+			title:d_sandstone = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+			}
+			title:d_the_stoneway = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_redmarch = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_the_princes_pass = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_blackmont = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_torrentine = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_the_westmarch = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_palemarch = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_nightsong = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_marchfields = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_whentway = { set_de_jure_liege_title = title:k_the_stormlands }
+			title:d_blackhaven = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_yronwood
+			}
+			title:d_yronwood = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_oldwell
+			}
+			title:d_oldwell = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_sandstone
+			}
+			title:d_sandstone = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_cockleswhent
+			}
+			title:d_cockleswhent = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_ridgeview
+			}
+			title:d_ridgeview = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		if = {
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_oldhills
+			}
+			title:d_oldhills = { set_de_jure_liege_title = title:k_the_stormlands }
+		}
+
+		struggle:red_mountains_struggle = { end_struggle = yes }
+
+		show_as_tooltip = {
+			stress_impact = {
+				humble = medium_stress_impact_gain
+				cynical = medium_stress_impact_gain
+			}
+		}
+
+		# Trigger a player facing event as a coda
+		#trigger_event = fp2_struggle.0900
+	}
+
+	cost = {}
+
+	ai_check_interval = 120
+
+	ai_potential = { always = yes }
+
+	ai_will_do = { base = 100 }
+}
+
+## If a native house successfully unites the Red Mountains, form the Redlands
+struggle_rm_ending_native_decision = {
+	decision_group_type = major
+	title = struggle_rm_ending_native_decision
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/fp2_decision_struggle_hostility.dds"
+	}
+	extra_picture = "gfx/interface/illustrations/struggle_decisions_buttons/fp2_decision_hostility.dds"
+	desc = struggle_rm_ending_native_decision_desc
+	selection_tooltip = struggle_rm_ending_native_decision_tooltip
+	confirm_click_sound = "event:/DLC/FP2/SFX/UI/fp2_struggle_ending_decision_confirm"
+	is_invisible = yes
+	sort_order = 80
+
+	is_valid = {
+		capital_county.duchy = {
+			OR = {
+				this = title:d_the_stoneway
+				this = title:d_redmarch
+				this = title:d_the_princes_pass
+				this = title:d_blackmont
+				this = title:d_torrentine
+				this = title:d_the_westmarch
+				this = title:d_palemarch
+				this = title:d_nightsong
+				this = title:d_marchfields
+				this = title:d_whentway
+				this = title:d_blackhaven
+				this = title:d_the_slayne
+				this = title:d_grandview
+				this = title:d_red_watch
+				this = title:d_yronwood
+				this = title:d_oldwell
+				this = title:d_sandstone
+				this = title:d_cockleswhent
+				this = title:d_ridgeview
+				this = title:d_oldhills
+			}
+		}
+		completely_controls_region = world_red_mountains_core
+		OR = {
+			completely_controls_region = world_red_mountains_reach
+			completely_controls_region = world_red_mountains_stormlands
+			completely_controls_region = world_red_mountains_dorne
+		}
+
+		custom_tooltip = {
+			text = struggle_ending_decision_correct_involvement_tt
+			any_character_struggle = {
+				involvement = involved
+				is_struggle_type = red_mountains_struggle
+			}
+		}
+	}
+
+	effect = {
+		##### Major Effects #####
+		if = {
+			limit = { exists = title:e_the_iron_throne.holder }
+			title:k_the_red_mountains = { set_de_jure_liege_title = title:e_the_iron_throne }
+		}
+		
+		title:d_the_stoneway = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_redmarch = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_the_princes_pass = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_blackmont = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_torrentine = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_the_westmarch = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_palemarch = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_nightsong = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_marchfields = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_whentway = { set_de_jure_liege_title = title:k_the_red_mountains }
+		title:d_blackhaven = { set_de_jure_liege_title = title:k_the_red_mountains }
+
+		if = {	
+			limit = {
+				completely_controls = title:d_the_slayne
+			}
+			title:d_the_slayne = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {	
+			limit = {
+				completely_controls = title:d_grandview
+			}
+			title:d_grandview = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_red_watch
+			}
+			title:d_red_watch = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_yronwood
+			}
+			title:d_yronwood = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_oldwell
+			}
+			title:d_oldwell = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_sandstone
+			}
+			title:d_sandstone = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_cockleswhent
+			}
+			title:d_cockleswhent = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_ridgeview
+			}
+			title:d_ridgeview = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {
+			limit = {
+				completely_controls = title:d_oldhills
+			}
+			title:d_oldhills = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		root = { get_title = title:k_the_red_mountains }
+		title:k_the_red_mountains = { set_capital_county = root.capital_county }
+		struggle:red_mountains_struggle = { end_struggle = yes }
+
+		show_as_tooltip = {
+			stress_impact = {
+				humble = medium_stress_impact_gain
+				cynical = medium_stress_impact_gain
+			}
+		}
+
+		# Trigger a player facing event as a coda
+		#trigger_event = fp2_struggle.0900
+	}
+
+	cost = {}
+
+	ai_check_interval = 120
+
+	ai_potential = { always = yes }
+
+	ai_will_do = { base = 100 }
+}

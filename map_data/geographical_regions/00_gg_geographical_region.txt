@@ -1,0 +1,69 @@
+﻿# Geographical regions
+# Regions can be declared with one or more of the following fields:
+#	duchies = { }, takes duchy title names declared in landed_titles.txt
+#	counties = { }, takes county title names declared in landed_titles.txt
+#	provinces = { }, takes province id numbers declared in /history/provinces
+#	regions = { }, a region can also include other regions, however the subregions needs to be declared before the parent region.
+#		E.g. If the region world_europe contains the region world_europe_west then world_europe_west needs to be declared as a region before (i.e. higher up in this file) world_europe.
+
+###########################################################################
+# World Regions
+#	These groups are mutually exclusive on the same tier & should cover every part of the map
+###########################################################################
+
+world_red_mountains_core = {
+	duchies = {
+		d_the_stoneway
+		d_redmarch
+		d_the_princes_pass
+		d_blackmont
+		d_torrentine
+		d_the_westmarch
+		d_palemarch
+		d_nightsong
+		d_marchfields
+		d_whentway
+		d_blackhaven
+	}
+}
+
+world_red_mountains_reach = {
+	duchies = {
+		d_cockleswhent
+		d_oldhills
+		d_ridgeview
+	}
+}
+
+world_red_mountains_stormlands = {
+	duchies = {
+		d_red_watch
+		d_grandview
+		d_the_slayne
+	}
+}
+
+world_red_mountains_dorne = {
+	duchies = {
+		d_yronwood
+		d_oldwell
+		d_sandstone
+	}
+}
+
+world_red_mountains_periphery = {
+	regions = {
+		world_red_mountains_reach
+		world_red_mountains_stormlands
+		world_red_mountains_dorne
+	}
+}
+
+world_red_mountains_broad = {
+	regions = {
+		world_red_mountains_core
+		world_red_mountains_reach
+		world_red_mountains_stormlands
+		world_red_mountains_dorne
+	}
+}

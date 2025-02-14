@@ -1,0 +1,349 @@
+## CAPITAL DECISION ##
+## I'm tired of watching AI houses usurp the Riverlands and then abandon the castle their house has held for 2000 years to move into Riverrun
+decision_gg_new_capital = {
+	sort_order = 2000
+	
+	title = {
+		desc = decision_new_capital.t
+	}
+	desc = {
+		desc = decision_new_capital.desc	
+	}
+
+	is_shown = {
+		is_landed = yes
+		OR = {
+			has_government = lp_feudal_government
+			has_government = pirate_government
+			has_government = feudal_government
+		}
+		NOT = { capital_county = primary_title.title_capital_county }
+		OR = {
+			highest_held_title_tier = tier_empire
+			highest_held_title_tier = tier_kingdom
+		}
+	}
+	
+	is_valid = {
+		OR = {
+			capital_county.kingdom = {
+				this = root.primary_title
+			}
+			capital_county.empire = {
+				this = root.primary_title
+			}
+		}
+		OR = {
+			trigger_if = {
+				limit = {
+					OR = {
+						has_government = lp_feudal_government
+						has_government = feudal_government
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = castle_04
+				}
+			}
+			trigger_if = {
+				limit = {
+					has_government = pirate_government
+				}
+				capital_province = {
+					has_holding_type = pirate_den_holding
+					has_building_or_higher = pirate_den_03
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_riverlands
+						has_primary_title = title:e_the_riverlands
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = riverrun_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_vale
+						has_primary_title = title:e_the_vale
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = the_eyrie_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_north
+						has_primary_title = title:e_the_north
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = winterfell_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_westerlands
+						has_primary_title = title:e_the_westerlands
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = casterly_rock_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_reach
+						has_primary_title = title:e_the_reach
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = highgarden_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_stormlands
+						has_primary_title = title:e_the_stormlands
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = storms_end_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_iron_islands
+						has_primary_title = title:e_the_iron_islands
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = pyke_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_dorne
+						has_primary_title = title:e_dorne
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = sunspear_01
+				}
+			}
+			trigger_if = {
+				limit = {
+					OR = {
+						has_primary_title = title:k_the_crownlands
+						has_primary_title = title:e_blackwater_bay
+						has_primary_title = title:e_the_iron_throne
+					}
+				}
+				capital_province = {
+					has_holding_type = castle_holding
+					has_building_or_higher = the_red_keep_01
+				}
+			}
+		}
+	}
+	
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	
+	effect = {
+		primary_title = { set_capital_county = root.capital_county }
+		every_vassal = {
+			custom = every_parochial_vassal
+			add_opinion = {
+				modifier = angry_opinion
+				opinion = -20
+				target = root
+			}
+		}
+	}
+	
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+	
+	ai_check_interval = 4
+}
+
+## MISC DECISIONS ##
+
+## If controlled, the Iron Islands annexes Flint's Finger
+decision_gg_finger_annexation = {
+	decision_group_type = major
+
+	is_shown = {
+		OR = {
+			has_game_rule = agot_not_shattered
+			has_game_rule = agot_shatter_empires
+		}
+		OR = {
+			has_primary_title = title:k_the_iron_islands
+			has_primary_title = title:e_the_iron_islands
+		}
+		OR = {
+			title:d_flints_finger.kingdom = {
+			NOT = {
+					this = title:k_the_iron_islands
+				}
+			}
+			title:d_lakelands.kingdom = {
+			NOT = {
+				this = title:k_the_iron_islands
+				}
+			}
+		}
+	}
+	is_valid  = {
+		completely_controls = title:d_flints_finger
+		completely_controls = title:d_lakelands
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	effect = {
+		title:d_flints_finger = { set_de_jure_liege_title = title:k_the_iron_islands }
+		title:d_lakelands = { set_de_jure_liege_title = title:k_the_iron_islands }
+	}
+}
+
+## If controlled, the North retakes Flint's Finger
+decision_gg_finger_reclamation = {
+	decision_group_type = major
+
+	is_shown = {
+		OR = {
+			has_game_rule = agot_not_shattered
+			has_game_rule = agot_shatter_empires
+		}
+		OR = {
+			has_primary_title = title:k_the_north
+			has_primary_title = title:e_the_north
+		}
+		OR = {
+			title:d_flints_finger.kingdom = {
+			NOT = {
+					this = title:k_the_north
+				}
+			}
+			title:d_lakelands.kingdom = {
+			NOT = {
+				this = title:k_the_north
+				}
+			}
+		}
+	}
+	is_valid  = {
+		completely_controls = title:d_flints_finger
+		completely_controls = title:d_lakelands
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	effect = {
+		title:d_flints_finger = { set_de_jure_liege_title = title:k_the_north }
+		title:d_lakelands = { set_de_jure_liege_title = title:k_the_north }
+	}
+}
+
+## If controlled, the North annexes the Three Sisters
+decision_gg_sisters_annexation = {
+	decision_group_type = major
+
+	is_shown = {
+		OR = {
+			has_game_rule = agot_not_shattered
+			has_game_rule = agot_shatter_empires
+		}
+		OR = {
+			has_primary_title = title:k_the_north
+			has_primary_title = title:e_the_north
+		}
+		OR = {
+			title:d_the_sisters.kingdom = {
+			NOT = {
+					this = title:k_the_north
+				}
+			}
+		}
+	}
+	is_valid  = {
+		completely_controls = title:d_the_sisters
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	effect = {
+		title:d_the_sisters = { set_de_jure_liege_title = title:k_the_north }
+	}
+}
+
+## If controlled, the Vale retakes the Three Sisters
+decision_gg_sisters_reclamation = {
+	decision_group_type = major
+
+	is_shown = {
+		OR = {
+			has_game_rule = agot_not_shattered
+			has_game_rule = agot_shatter_empires
+		}
+		OR = {
+			has_primary_title = title:k_the_vale
+			has_primary_title = title:e_the_vale
+		}
+		OR = {
+			title:d_the_sisters.kingdom = {
+			NOT = {
+					this = title:k_the_vale
+				}
+			}
+		}
+	}
+	is_valid  = {
+		completely_controls = title:d_the_sisters
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	effect = {
+		title:d_the_sisters = { set_de_jure_liege_title = title:k_the_vale }
+	}
+}
