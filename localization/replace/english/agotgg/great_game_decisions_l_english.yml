@@ -1,0 +1,35 @@
+﻿l_english:
+ decision_new_capital.t:0 "Move the Capital"
+ decision_new_capital.desc:0 "Why should we abandon the ancestral home of our house, when it is more than suitable for royalty? Rather than moving to court, let the court move to us."
+ decision_new_capital_tooltip:0 "Why should we abandon the ancestral home of our house, when it is more than suitable for royalty? Rather than moving to court, let the court move to us."
+ decision_new_capital_confirm:0 "Move the Capital"
+
+ decision_summerhall_duchy.t:0 "Form the Lordship of Summerhall"
+ decision_summerhall_duchy.desc:0 "A princely seat should naturally hold direct fealty to the throne. Let us fix this awkwardness."
+ decision_summerhall_duchy_tooltip:0 "A princely seat should naturally hold direct fealty to the throne. Let us fix this awkwardness."
+ decision_summerhall_duchy_confirm:0 "Form the Lordship of Summerhall"
+
+ decision_summerhall_annex.t:0 "Reintegrate Summerfield"
+ decision_summerhall_annex.desc:0 "The lands once stolen from us by the Iron Throne have been reclaimed, we should restore Summerfield to its proper place."
+ decision_summerhall_annex_tooltip:0 "The lands once stolen from us by the Iron Throne have been reclaimed, we should restore Summerfield to its proper place."
+ decision_summerhall_annex_confirm:0 "Reintegrate Summerfield"
+
+ decision_gg_finger_annexation.t:0 "Seize Cape Kraken"
+ decision_gg_finger_annexation.desc:0 "Cape Kraken has long been inhabited by the Ironborn. It is our rightful land, inhabited by our subject people. With direct control established, we can prove this truth to the world."
+ decision_gg_finger_annexation_tooltip:0 "Cape Kraken has long been inhabited by the Ironborn. It is our rightful land, inhabited by our subject people. With direct control established, we can prove this truth to the world."
+ decision_gg_finger_annexation_confirm:0 "Seize Cape Kraken"
+
+ decision_gg_finger_reclamation.t:0 "Reintegrate Flint's Finger"
+ decision_gg_finger_reclamation.desc:0 "We have rescued the men of the Finger from the Ironborn, restoring them as a rightful part of the North."
+ decision_gg_finger_reclamation_tooltip:0 "We have rescued the men of the Finger from the Ironborn, restoring them as a rightful part of the North."
+ decision_gg_finger_reclamation_confirm:0 "Reintegrate Flint's Finger"
+
+ decision_gg_sisters_annexation.t:0 "Seize the Sisters"
+ decision_gg_sisters_annexation.desc:0 "The Sisters have always been a rightful part of the North, even if it was seized by the Andals of the Vale long ago. We must correct this injustice."
+ decision_gg_sisters_annexation_tooltip:0 "The Sisters have always been a rightful part of the North, even if it was seized by the Andals of the Vale long ago. We must correct this injustice."
+ decision_gg_sisters_annexation_confirm:0 "Seize the Sisters"
+
+ decision_gg_sisters_reclamation.t:0 "Reintegrate the Sisters"
+ decision_gg_sisters_reclamation.desc:0 "We have once again saved the Sistermen from the savagery of the North and can restore them as rightful subjects of the Vale."
+ decision_gg_sisters_reclamation_tooltip:0 "We have once again saved the Sistermen from the savagery of the North and can restore them as rightful subjects of the Vale."
+ decision_gg_sisters_reclamation_confirm:0 "Reintegrate the Sisters"

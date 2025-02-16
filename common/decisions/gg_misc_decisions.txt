@@ -1,4 +1,3 @@
-## CAPITAL DECISION ##
 ## I'm tired of watching AI houses usurp the Riverlands and then abandon the castle their house has held for 2000 years to move into Riverrun
 decision_gg_new_capital = {
 	sort_order = 2000
@@ -196,11 +195,173 @@ decision_gg_new_capital = {
 	ai_check_interval = 4
 }
 
-## MISC DECISIONS ##
+## Summerhall Duchy Decision
+decision_summerhall_duchy = {
+	decision_group_type = major
+
+	title = {
+		desc = decision_summerhall_duchy.t
+	}
+	desc = {
+		desc = decision_summerhall_duchy.desc	
+	}
+
+	is_shown = {
+		exists = title:e_the_iron_throne.holder
+		title:d_grandview.kingdom = { this = title:k_the_stormlands }
+		OR = {
+			capital_province = {
+				has_holding_type = castle_holding
+				has_building_or_higher = agot_summerhall_01
+			}
+			capital_province = {
+				has_holding_type = castle_holding
+				has_building_or_higher = agot_summerhall_ruins_01
+			}
+			capital_province = {
+				has_holding_type = castle_holding
+				has_building_or_higher = agot_summerhall_ruins_02
+			}
+		}
+	}
+	is_valid  = {
+		has_primary_title = title:d_grandview
+		OR = {
+			capital_province = {
+				has_holding_type = castle_holding
+				has_building_or_higher = agot_summerhall_01
+			}
+			capital_province = {
+				has_holding_type = castle_holding
+				has_building_or_higher = agot_summerhall_ruins_02
+			}
+		}
+	}
+	cost = {
+		prestige = 200
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	effect = {
+		title:d_grandview = { 
+			set_title_name = summerhall_title
+			set_color_from_title = title:d_dragonstone
+			set_de_jure_liege_title = title:k_the_crownlands
+			set_capital_county = title:c_summerfield
+		}
+		title:d_grandview.holder = {
+			create_title_and_vassal_change = {
+				type = swear_fealty
+				save_scope_as = change
+				add_claim_on_loss = no
+			}
+			change_liege = {
+				liege = title:e_the_iron_throne.holder
+				change = scope:change
+			}
+		}
+		resolve_title_and_vassal_change = scope:change
+	}
+}
+
+decision_summerhall_annex = {
+	decision_group_type = major
+
+	title = {
+		desc = decision_summerhall_annex.t
+	}
+	desc = {
+		desc = decision_summerhall_annex.desc	
+	}
+
+	is_shown = {
+		NOT = {
+			title:d_grandview.kingdom = {
+				this = title:k_the_stormlands
+			}
+		}
+		OR = {
+			has_primary_title = title:k_the_stormlands
+			has_primary_title = title:e_the_stormlands
+		}
+	}
+	is_valid  = {
+		completely_controls = title:d_grandview
+	}
+	is_valid_showing_failures_only = {
+		is_imprisoned = no
+		is_available_adult = yes
+		is_at_war = no
+	}
+	effect = {
+		title:d_grandview = { 
+			set_capital_county = title:c_grandview
+			reset_title_name = yes
+			set_de_jure_liege_title = title:k_the_stormlands 
+			set_color_from_title = title:k_the_stormlands
+		}
+	}
+}
+
+# Empire-tier Red Mountains
+agot_proclaim_kingdom_rm_decision = {
+	picture = {
+		reference = "gfx/interface/illustrations/decisions/decision_realm.dds"
+	}
+	decision_group_type = major
+	ai_check_interval = 1
+	desc = agot_proclaim_kingdom_decision_desc
+
+	is_shown = {
+		NOT = { government_has_flag = government_is_nw }
+		agot_is_independent_ruler = yes
+		primary_title = title:k_the_red_mountains
+		#is_ai = no
+		NOT = { has_variable = pre_war_liege }
+		NOR = {
+			has_game_rule = agot_shatter_duchies
+			has_game_rule = agot_shatter_duchies_even
+			has_game_rule = agot_shatter_kingdoms
+			has_game_rule = agot_shatter_petty_kingdoms
+			has_game_rule = agot_shatter_empires
+		}
+	}
+
+	is_valid = {
+		#is_ai = no
+	}
+
+	effect = {
+		title:k_the_red_mountains = { set_de_jure_liege_title = title:e_the_red_mountains }
+		get_title = title:e_the_red_mountains
+
+		#custom_tooltip = agot_proclaim_kingdom_decision_tooltip
+		trigger_event = agot_proclamation_events.0001
+	}
+
+
+	ai_potential = {
+		always = yes
+	}
+
+	ai_will_do = {
+		base = 100
+	}
+}
 
 ## If controlled, the Iron Islands annexes Flint's Finger
 decision_gg_finger_annexation = {
 	decision_group_type = major
+
+	title = {
+		desc = decision_gg_finger_annexation.t
+	}
+	desc = {
+		desc = decision_gg_finger_annexation.desc	
+	}
 
 	is_shown = {
 		OR = {
@@ -243,6 +404,13 @@ decision_gg_finger_annexation = {
 decision_gg_finger_reclamation = {
 	decision_group_type = major
 
+	title = {
+		desc = decision_gg_finger_reclamation.t
+	}
+	desc = {
+		desc = decision_gg_finger_reclamation.desc	
+	}
+
 	is_shown = {
 		OR = {
 			has_game_rule = agot_not_shattered
@@ -284,6 +452,13 @@ decision_gg_finger_reclamation = {
 decision_gg_sisters_annexation = {
 	decision_group_type = major
 
+	title = {
+		desc = decision_gg_sisters_annexation.t
+	}
+	desc = {
+		desc = decision_gg_sisters_annexation.desc	
+	}
+
 	is_shown = {
 		OR = {
 			has_game_rule = agot_not_shattered
@@ -317,6 +492,13 @@ decision_gg_sisters_annexation = {
 ## If controlled, the Vale retakes the Three Sisters
 decision_gg_sisters_reclamation = {
 	decision_group_type = major
+
+	title = {
+		desc = decision_new_capital.t
+	}
+	desc = {
+		desc = decision_new_capital.desc	
+	}
 
 	is_shown = {
 		OR = {

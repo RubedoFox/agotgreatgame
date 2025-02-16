@@ -78,6 +78,17 @@ struggle_rm_ending_conquest_decision = {
 			title:d_grandview = { set_de_jure_liege_title = title:k_dorne }
 		}
 
+		if = {	
+			limit = {
+				OR = {
+					has_primary_title = title:k_dorne
+					has_primary_title = title:e_dorne
+				}
+				completely_controls = title:d_summerhall
+			}
+			title:c_summerfield = { set_de_jure_liege_title = title:d_grandview }
+		}
+
 		if = {
 			limit = {
 				OR = {
@@ -162,6 +173,17 @@ struggle_rm_ending_conquest_decision = {
 				completely_controls = title:d_grandview
 			}
 			title:d_grandview = { set_de_jure_liege_title = title:k_the_reach }
+		}
+
+		if = {	
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_reach
+					has_primary_title = title:e_the_reach
+				}
+				completely_controls = title:d_summerhall
+			}
+			title:c_summerfield = { set_de_jure_liege_title = title:d_grandview }
 		}
 
 		if = {
@@ -272,6 +294,17 @@ struggle_rm_ending_conquest_decision = {
 			title:d_cockleswhent = { set_de_jure_liege_title = title:k_the_stormlands }
 		}
 
+		if = {	
+			limit = {
+				OR = {
+					has_primary_title = title:k_the_stormlands
+					has_primary_title = title:e_the_stormlands
+				}
+				completely_controls = title:d_summerhall
+			}
+			title:c_summerfield = { set_de_jure_liege_title = title:d_grandview }
+		}
+
 		if = {
 			limit = {
 				OR = {
@@ -346,6 +379,7 @@ struggle_rm_ending_native_decision = {
 				this = title:d_blackhaven
 				this = title:d_the_slayne
 				this = title:d_grandview
+				this = title:d_summerhall
 				this = title:d_red_watch
 				this = title:d_yronwood
 				this = title:d_oldwell
@@ -377,6 +411,9 @@ struggle_rm_ending_native_decision = {
 			limit = { exists = title:e_the_iron_throne.holder }
 			title:k_the_red_mountains = { set_de_jure_liege_title = title:e_the_iron_throne }
 		}
+		else = {
+			title:k_the_red_mountains = { set_de_jure_liege_title = title:e_the_red_mountains }
+		}
 		
 		title:d_the_stoneway = { set_de_jure_liege_title = title:k_the_red_mountains }
 		title:d_redmarch = { set_de_jure_liege_title = title:k_the_red_mountains }
@@ -402,6 +439,13 @@ struggle_rm_ending_native_decision = {
 				completely_controls = title:d_grandview
 			}
 			title:d_grandview = { set_de_jure_liege_title = title:k_the_red_mountains }
+		}
+
+		if = {	
+			limit = {
+				completely_controls = title:d_summerhall
+			}
+			title:d_summerhall = { set_de_jure_liege_title = title:k_the_red_mountains }
 		}
 
 		if = {
@@ -455,6 +499,37 @@ struggle_rm_ending_native_decision = {
 
 		root = { get_title = title:k_the_red_mountains }
 		title:k_the_red_mountains = { set_capital_county = root.capital_county }
+
+		culture:redlander = {
+			reset_culture_creation_date = yes
+			get_all_innovations_from = culture:marcher
+			get_all_innovations_from = culture:stone_dornish
+		}
+		title:k_the_red_mountains = {
+			every_de_jure_county  = {
+				limit = {
+					OR = {
+						culture = culture:marcher
+						culture = culture:stone_dornish
+					}
+				}
+				set_county_culture = culture:redlander
+			}
+		}
+		## WIP
+		#every_ruler = {
+		#	limit = {
+		#		capital_county.kingdom = {
+		#			this = title:k_the_red_mountains
+		#		}
+		#		OR = {
+		#			culture = culture:marcher
+		#			culture = culture:stone_dornish
+		#		}
+		#	}
+		#	set_culture = culture:redlander
+		#}
+
 		struggle:red_mountains_struggle = { end_struggle = yes }
 
 		show_as_tooltip = {

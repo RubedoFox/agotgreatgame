@@ -12,6 +12,9 @@
 ###########################################################################
 
 world_red_mountains_core = {
+	kingdoms = {
+		k_the_red_mountains
+	}
 	duchies = {
 		d_the_stoneway
 		d_redmarch

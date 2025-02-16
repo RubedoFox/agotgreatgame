@@ -36,6 +36,7 @@
 		world_westeros_the_reach
 		world_westeros_the_stormlands
 		world_westeros_dorne
+		world_red_mountains_core
 	}
 
 	# A culture or faith becomes involved if 80% of the total number of counties belonging to it are inside the struggle region.
@@ -70,17 +71,17 @@
 	##################################################
 	# Phases
 	##################################################
-	start_phase = struggle_rm_phase_opportunity
+	start_phase = struggle_rm_phase_frontier
 
 	phase_list = {
 
-		# Opportunity Phase represents complacency after a long period of coexistence during Conciliation; people are comfortable that things are good and so actors with ill-intent can get away with things once again.
-		struggle_rm_phase_opportunity = {
+		# Low-level raiding, but no full-flegeded war; can shift to conquest or accomodation
+		struggle_rm_phase_frontier = {
 			##################################################
 			# General Set-Up
 
 			future_phases = {
-				struggle_rm_phase_hostility = {
+				struggle_rm_phase_conquest = {
 					catalysts = {
 						catalyst_passing_of_time = 1
 						catalyst_gain_claim_on_title_rm = 2
@@ -96,7 +97,7 @@
 						catalyst_went_war_with_nw = 20
 					}
 				}
-				struggle_rm_phase_conciliation = {
+				struggle_rm_phase_accommodation = {
 					catalysts = {
 						catalyst_improve_development_vassal_diff_culture = 1 # How to do AI?
 						catalyst_gift_independent_ruler = 2 # AI done
@@ -222,14 +223,13 @@
 			}
 		}
 
-		# The Hostility phase accounts for the more brutal & fundamentalist side of the struggle; intolerance and violence break out even in stable areas & resentments over slights real or imagined escalate dramatically.
-		# Should we add a transition to Opportunity? A smaller deescalation than going to compromise
-		struggle_rm_phase_hostility = {
+		# The involved kingdoms fight for dominance, with a focus on CBs, also enable the conquest ending
+		struggle_rm_phase_conquest = {
 			##################################################
 			# General Set-Up
 
 			future_phases = {
-				struggle_rm_phase_compromise = {
+				struggle_rm_phase_accommodation = {
 					catalysts = {
 						catalyst_passing_of_time = 1
 						catalyst_improve_development_vassal_diff_culture = 1 # How to do AI?
@@ -245,6 +245,22 @@
 						catalyst_became_best_friend_soulmate_with_very_important_character = 5 # AI done
 						catalyst_convert_local_culture = 5
 						catalyst_release_important = 10
+						catalyst_went_war_with_nw = 20
+					}
+				}
+				struggle_rm_phase_frontier = {
+					catalysts = {
+						catalyst_passing_of_time = 1
+						catalyst_gain_claim_on_title_rm = 2
+						catalyst_win_any_war_within_the_region = 3 # Good
+						catalyst_new_building_in_castle = 2 # How to do AI?
+						catalyst_becomes_rival_with_involved = 5 # Good
+						catalyst_using_a_hook_on_very_important_character = 3 # good
+						catalyst_unnatural_death_important_character = 10
+						catalyst_usurp_title_rm = 5 # good
+						catalyst_reveal_secret_important = 3
+						catalyst_broke_truce_against_important_character = 10 # Cannot motivate the AI to do that without code support
+						catalyst_raided_holding = 3
 						catalyst_went_war_with_nw = 20
 					}
 				}
@@ -376,13 +392,29 @@
 			}
 		}
 
-		# Compromise happens either when Hostility has gone on so long that people are sick of it, or else when Hostility has been narrowly avoided after a bout of Tension and folks're relieved; shared trauma and too much violence encourage people to calm down and live and let live.
-		struggle_rm_phase_compromise = {
+		# Alliances and cross-culture understanding form, enable the native ending
+		struggle_rm_phase_accommodation = {
 			##################################################
 			# General Set-Up
 
 			future_phases = {
-				struggle_rm_phase_opportunity = {
+				struggle_rm_phase_conquest = {
+					catalysts = {
+						catalyst_passing_of_time = 1
+						catalyst_gain_claim_on_title_rm = 2
+						catalyst_win_any_war_within_the_region = 3 # Good
+						catalyst_new_building_in_castle = 2 # How to do AI?
+						catalyst_becomes_rival_with_involved = 200 # Good
+						catalyst_using_a_hook_on_very_important_character = 3 # good
+						catalyst_unnatural_death_important_character = 10
+						catalyst_usurp_title_rm = 5 # good
+						catalyst_reveal_secret_important = 3
+						catalyst_broke_truce_against_important_character = 10 # Cannot motivate the AI to do that without code support
+						catalyst_raided_holding = 3
+						catalyst_went_war_with_nw = 20
+					}
+				}
+				struggle_rm_phase_frontier = {
 					catalysts = {
 						catalyst_passing_of_time = 1
 						catalyst_gain_claim_on_title_rm = 2
@@ -506,163 +538,6 @@
 				uninvolved_county_modifier = {
 					county_opinion_add = -25
 					tax_mult = -0.5
-				}
-			}
-
-			##################################################
-			# Ending
-
-			#We are listing all available decision to give players insights on how they can end the Struggle
-			ending_decisions = {
-				struggle_rm_ending_conquest_decision
-				struggle_rm_ending_native_decision
-			}
-		}
-
-		struggle_rm_phase_conciliation = {
-			##################################################
-			# General Set-Up
-
-			future_phases = {
-				struggle_rm_phase_compromise = {
-					catalysts = {
-						catalyst_passing_of_time = 1
-						catalyst_gain_claim_on_title_rm = 2
-						catalyst_win_any_war_within_the_region = 3 # Good
-						catalyst_new_building_in_castle = 2 # How to do AI?
-						catalyst_becomes_rival_with_involved = 5 # Good
-						catalyst_using_a_hook_on_very_important_character = 3 # good
-						catalyst_unnatural_death_important_character = 10
-						catalyst_usurp_title_rm = 5 # good
-						catalyst_reveal_secret_important = 3
-						catalyst_broke_truce_against_important_character = 10 # Cannot motivate the AI to do that without code support
-						catalyst_raided_holding = 3
-						catalyst_went_war_with_nw = 20
-					}
-				}
-			}
-
-			war_effects = {
-				###### Common
-				common_parameters = {
-					invasion_conquest_war_cannot_be_declared = yes
-					struggle_clash_restricted_to_single_county = yes
-				}
-
-				###### Involved
-
-				involved_parameters = {
-					struggle_cb_cost_major = yes
-					unlocks_rm_reclamation_casus_belli = yes
-					struggle_cheaper_buy_truce = yes
-					truces_by_involved_or_interlopers_within_region_longer = yes
-				}
-
-				involved_character_modifier = {
-					ai_war_chance = -0.5
-					ai_war_cooldown = 0.5
-				}
-
-				involved_county_modifier = {
-					monthly_county_control_decline_at_war_add = 0.01
-					monthly_county_control_growth_at_war_factor = -0.10
-				}
-
-				###### Interlopers
-				interloper_parameters = {
-					truces_by_involved_or_interlopers_within_region_longer = yes
-				}
-
-				interloper_county_modifier = {
-					monthly_county_control_decline_at_war_add = 0.02
-					monthly_county_control_growth_at_war_factor = -0.25
-				}
-
-				###### Uninvolved
-				uninvolved_county_modifier = {
-					monthly_county_control_decline_at_war_add = 0.05
-					monthly_county_control_growth_at_war_factor = -0.5
-				}
-			}
-
-			culture_effects = {
-				###### Common
-
-				# Nothing
-
-				###### Involved
-				involved_parameters = {
-					easier_culture_hybridising_for_involved_and_interlopers = yes
-					release_prisoner_diff_culture_gives_prestige = yes
-				}
-
-				involved_character_modifier = {
-					cultural_head_acceptance_gain_mult = 0.2
-					opinion_of_different_culture = 20
-					learn_language_scheme_phase_duration_add = medium_scheme_phase_duration_bonus_value
-					owned_personal_scheme_success_chance_add = 10
-					cultural_head_fascination_mult = 0.25
-				}
-
-				###### Interlopers
-				interloper_parameters = {
-					easier_culture_hybridising_for_involved_and_interlopers = yes
-				}
-
-				###### Uninvolved
-
-				# Nothing
-			}
-
-			other_effects = {
-				###### Common
-				all_county_modifier = {
-					development_growth_factor = 0.3
-				}
-
-				###### Involved
-				involved_parameters = {
-					# struggle_vips_and_culture_faith_heads_may_develop_spontaneous_positive_or_negative_relations = yes
-					struggle_unlocks_befriend_schemes_for_everyone = yes
-					unlocks_golden_age_jewish_science_decision = yes # To implement
-					struggle_prestige_from_feast = yes
-					struggle_gifts_involved_diff_culture_leads_to_friendship = yes
-					struggle_grant_titles_diff_culture_to_leads_to_friendship = yes
-					struggle_cannot_execute_involved_prisoners  = yes
-					struggle_becoming_friend_gives_prestige = yes
-					involved_form_alliances_with_each_other_easier = yes
-					struggle_agents_less_likely_to_join_schemes = yes
-				}
-
-				involved_county_modifier = {
-					county_opinion_add = 20
-					build_speed = -0.25
-					city_holding_holding_build_gold_cost = -0.25
-					city_holding_build_gold_cost = -0.25
-				}
-
-				involved_character_modifier = {
-					befriend_scheme_phase_duration_add = major_scheme_phase_duration_bonus_value
-					enemy_hostile_scheme_phase_duration_add = medium_scheme_phase_duration_malus_value
-					max_personal_schemes_add = 1
-				}
-
-				###### Interlopers
-				interloper_character_modifier = {
-					county_opinion_add = 10
-					build_speed = -0.05
-
-					tax_mult = -0.25
-				}
-
-				###### Uninvolved
-
-				# Really hard for them to stay here
-				uninvolved_county_modifier = {
-					tax_mult = -0.5
-					county_opinion_add = -50
-					garrison_size = -0.5
-					supply_limit_mult = -0.5
 				}
 			}
 

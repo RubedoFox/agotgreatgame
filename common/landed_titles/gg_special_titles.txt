@@ -1,0 +1,17 @@
+﻿@correct_culture_primary_score = 100
+@better_than_the_alternatives_score = 50
+@always_primary_score = 1000
+
+# special titles
+
+d_summerhall = {
+	landless = yes
+	color = { 171 87 185 }
+	capital = c_summerfield
+}
+
+e_the_red_mountains = {
+	landless = yes
+	color = { 232 110 85 }
+	capital = c_kingsgrave
+}

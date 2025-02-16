@@ -1,0 +1,68 @@
+﻿redlander = {
+	color = { 0.82 0.30 0.25 }
+
+	ethos = ethos_stoic
+	heritage = heritage_andal
+	language = language_common
+	martial_custom = martial_custom_male_only
+
+	traditions = {
+		tradition_hill_dwellers
+		tradition_mountaineers
+		tradition_eye_for_an_eye
+		agot_tradition_marcher
+		agot_tradition_stone_dornish
+	}
+
+	name_list = name_list_redlander
+
+	coa_gfx = {
+		andal_coa_gfx
+	}
+	building_gfx = {
+		andal_building_gfx
+		iberian_building_gfx
+	}
+	clothing_gfx = {
+		marcher_clothing_gfx
+		stone_dornish_clothing_gfx
+		iberian_christian_clothing_gfx
+		mena_clothing_gfx
+		andal_clothing_gfx
+	}
+	unit_gfx = {
+		iberian_muslim_unit_gfx
+	}
+
+	ethnicities = {
+		1 = Stormlander_1
+		1 = Stormlander_2
+		1 = Stormlander_3
+		1 = Stormlander_4
+		1 = Stormlander_5
+		1 = Stormlander_9
+		1 = Stormlander_10
+		1 = Reachmen_10
+		1 = Reachmen_11
+		1 = Reachmen_12
+		1 = Reachmen_13
+		1 = Reachmen_18
+		1 = Reachmen_19
+		1 = Reachmen_20
+		1 = Reachmen_21
+		1 = Stone_Dornish_8
+		1 = Stone_Dornish_9
+		1 = Stone_Dornish_10
+		1 = Stone_Dornish_11
+		1 = Stone_Dornish_12
+		1 = Stone_Dornish_13
+		1 = Stone_Dornish_14
+		1 = Stone_Dornish_15
+	}
+
+	parents = {
+		marcher
+		stone_dornish
+	}
+	created = 8000.1.1
+}
